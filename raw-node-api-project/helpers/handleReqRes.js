@@ -2,8 +2,13 @@
  *  Handle request and response
  */
 
+// dependencies
 const url = require("url");
 const { StringDecoder } = require("string_decoder");
+const routes = require("../routes");
+const {
+  notFoundHandler,
+} = require("../handlers/routeHandlers/notFoundHandler");
 
 const handler = {};
 
@@ -17,8 +22,20 @@ handler.handleReqRes = (req, res) => {
   const queryStringObj = parsedUrl.query;
   const headersObj = req.headers;
 
+  // create on object for properties
+  const requestProperties = {
+    parsedUrl,
+    pathName,
+    trimPath,
+    method,
+    queryStringObj,
+    headersObj,
+  };
+
   const decoder = new StringDecoder("utf-8");
   let realData = "";
+
+  const chooseHandler = routes[trimPath] ? routes[trimPath] : notFoundHandler;
 
   req.on("data", (buffer) => {
     realData += decoder.write(buffer);

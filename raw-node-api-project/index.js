@@ -7,7 +7,7 @@
 const http = require("http");
 const url = require("url");
 const { StringDecoder } = require("string_decoder");
-const handleReqRes = require("./helpers/handleReqRes");
+const { handleReqRes } = require("./helpers/handleReqRes");
 
 // module scafolding
 const app = {};
@@ -26,6 +26,7 @@ app.createServer = () => {
 };
 
 // handle Reqest and Response
+app.handleReqRes = handleReqRes;
 
 // start server
 app.createServer();
