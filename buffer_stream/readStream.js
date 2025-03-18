@@ -12,6 +12,7 @@ const server = http.createServer((req, res) => {
     req.on("data", (chunk) => {
       body.push(chunk);
     });
+
     req.on("end", () => {
       console.log("stream finished");
       const parsedBody = Buffer.concat(body).toString();
