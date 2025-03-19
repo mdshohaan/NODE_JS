@@ -5,6 +5,11 @@ const morgan = require("morgan");
 const app = express();
 app.use(morgan("dev"));
 
+function customMiddleware(req, res, next) {
+  console.log("I am Middlewar");
+  next();
+}
+
 app.get("/", (req, res) => {
   res.send("I am listening");
 });
