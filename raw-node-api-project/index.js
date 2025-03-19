@@ -5,8 +5,6 @@
 
 // dependencies
 const http = require("http");
-const url = require("url");
-const { StringDecoder } = require("string_decoder");
 const { handleReqRes } = require("./helpers/handleReqRes");
 
 // module scafolding
@@ -20,6 +18,7 @@ app.config = {
 // create server
 app.createServer = () => {
   const server = http.createServer(app.handleReqRes);
+
   server.listen(app.config.port, () => {
     console.log("Server Running");
   });
