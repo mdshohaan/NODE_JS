@@ -1,6 +1,8 @@
 const handler = {};
 
-handler.notFoundHandler = () => {
-  console.log("Not Found");
+handler.notFoundHandler = (requestProperties, callback) => {
+  callback(404, {
+    message: "Not Found",
+  });
 };
 module.exports = handler;
