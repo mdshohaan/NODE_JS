@@ -10,6 +10,13 @@ function customMiddleware(req, res, next) {
   next();
 }
 
+function tinyLogger() {
+  return (req, res, next) => {
+    console.log(`${req.method} - ${req.url}`);
+    next();
+  };
+}
+
 app.get("/", (req, res) => {
   res.send("I am listening");
 });
