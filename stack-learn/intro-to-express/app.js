@@ -9,6 +9,7 @@ function customMiddleware(req, res, next) {
   console.log("I am Middlewar");
   next();
 }
+const a = [];
 
 function tinyLogger() {
   return (req, res, next) => {
