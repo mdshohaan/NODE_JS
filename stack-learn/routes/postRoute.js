@@ -1,26 +1,28 @@
 const router = require("express").Router();
+const {
+  getAllPosts,
+  getSinglePost,
+  createNewPost,
+  updatePost,
+  deletePost,
+} = require("./postController");
 
 // Example.com/get GET
-router.get("/", (req, res) => {
-  res.send("Render All posts");
-});
-router.get("/:postId", (req, res) => {
-  res.send("Render All posts =" + req.params.postId);
-});
+router.get("/", getAllPosts);
+router.get("/:postId", getSinglePost);
 
 // Example.com/posts POST
-router.post("/", (req, res) => {
-  res.send("Create New Posts");
-});
+router.post("/", createNewPost);
 
 // Example.com/update PUT
-router.put("/:postId", (req, res) => {
-  res.send("Update Your Exixting Post =" + req.params.postId);
-});
+router.put("/:postId", updatePost);
 
 // Example.com/delete DELETE
-router.delete("/:postId", (req, res) => {
-  res.send("delete Your Post" + req.params.postId);
-});
+router.delete("/:postId", deletePost);
 
 module.exports = router;
+
+// ✨ referrence কোথায় দরকার হয়???
+// ✅ ফাংশনকে আর্গুমেন্ট হিসেবে পাঠানোর সময়
+// ✅ কোনো ফাংশনকে অন্য নামে স্টোর করার সময়
+// ✅ টাইমার বা ইভেন্ট হ্যান্ডলারের জন্য
