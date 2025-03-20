@@ -1,15 +1,13 @@
 const express = require("express");
 const PORT = process.env.PORT || 3000;
 const morgan = require("morgan");
-
 const app = express();
-app.use(morgan("dev"));
 
+// custom middlewar
 function customMiddleware(req, res, next) {
   console.log("I am Middlewar");
   next();
 }
-const a = [];
 
 function tinyLogger() {
   return (req, res, next) => {
@@ -17,6 +15,9 @@ function tinyLogger() {
     next();
   };
 }
+const middlewar = [customMiddleware, tinyLogger()];
+
+app.use(middlewar);
 
 app.get("/", (req, res) => {
   res.send("I am listening");
