@@ -13,10 +13,10 @@ app.use("/user", userRouter);
 app.use("/posts", postRoute);
 
 // Dynamic Router using Parameter
-app.get("/products/:prodId/reviews/:revId", (req, res) => {
-  console.log(req.params);
-  res.send(req.params);
-});
+// app.get("/products/:prodId/reviews/:revId", (req, res) => {
+//   console.log(req.params);
+//   res.send(req.params);
+// });
 
 // Default Route
 app.get("/", (req, res) => {
