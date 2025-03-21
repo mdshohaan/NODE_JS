@@ -5,6 +5,8 @@ const app = express();
 
 // middleware
 app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Contact Routes
 app.use("/contacts", contactRoute);
