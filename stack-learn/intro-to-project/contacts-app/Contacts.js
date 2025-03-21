@@ -30,4 +30,4 @@ class Contacts {
     return deletedObj;
   }
 }
-exports.contacts = new Contacts();
+module.exports = new Contacts();

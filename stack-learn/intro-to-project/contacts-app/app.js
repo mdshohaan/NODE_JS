@@ -7,10 +7,10 @@ const app = express();
 app.use(morgan("dev"));
 
 // Contact Routes
-app.use("/contact", contactRoute);
+app.use("/contacts", contactRoute);
 
 app.get("*", (req, res) => {
-  res.send("Plse use the Correct Routes");
+  res.send("Please use the Correct Routes");
 });
 
 const port = process.env.PORT || 3000;
