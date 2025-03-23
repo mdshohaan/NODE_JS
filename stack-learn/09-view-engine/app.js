@@ -8,7 +8,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Contact Routes
+//  Routes
 
 app.get("/", (req, res) => {
   let post = {
@@ -16,7 +16,14 @@ app.get("/", (req, res) => {
     body: "Test Body",
     published: false,
   };
-  res.render("index", { title: "EJS is Awesome Template Engine", post });
+  res.render("pages/index", { title: "EJS is Awesome Template Engine", post });
+});
+
+app.get("/about", (req, res) => {
+  res.render("pages/about");
+});
+app.get("/help", (req, res) => {
+  res.render("pages/help");
 });
 
 const port = process.env.PORT || 3000;
