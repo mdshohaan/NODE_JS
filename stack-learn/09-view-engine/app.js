@@ -11,7 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 // Contact Routes
 
 app.get("/", (req, res) => {
-  res.render("index", { title: "EJS is Awesome Template Engine" });
+  let post = {
+    title: "Test Title",
+    body: "Test Body",
+    published: false,
+  };
+  res.render("index", { title: "EJS is Awesome Template Engine", post });
 });
 
 const port = process.env.PORT || 3000;

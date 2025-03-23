@@ -13,6 +13,11 @@
       efficient results. Seamlessly initiate multifunctional mindshare without
       impactful opportunities. Dynamically synthesize.
     </p>
-    <%=new Date().toString() %>
+    <%= new Date().toString() %> <% if(post.published){ %>
+    <h3>Title: <%= post.title %></h3>
+    <p>Body:<%= post.body %></p>
+    <%} else {%>
+    <p>post is not yet published</p>
+    <% } %>
   </body>
 </html>
