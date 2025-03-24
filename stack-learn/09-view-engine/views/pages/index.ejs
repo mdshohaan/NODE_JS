@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>We are learning EJS</title>
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>
-      Monotonectally visualize robust models before turnkey e-commerce.
-      Dramatically generate real-time functionalities rather than highly
-      efficient results. Seamlessly initiate multifunctional mindshare without
-      impactful opportunities. Dynamically synthesize.
-    </p>
-    <%= new Date().toString() %> <% if(post.published){ %>
-    <h3>Title: <%= post.title %></h3>
-    <p>Body:<%= post.body %></p>
-    <%} else {%>
-    <p>post is not yet published</p>
-    <% } %>
-  </body>
+  <%- include("../partials/header.ejs") %>
+  <h1><%= title %></h1>
+  <p>
+    Monotonectally visualize robust models before turnkey e-commerce.
+    Dramatically generate real-time functionalities rather than highly efficient
+    results. Seamlessly initiate multifunctional mindshare without impactful
+    opportunities. Dynamically synthesize.
+  </p>
+  <%= new Date().toString() %> <% if(post.published){ %>
+  <h3>Title: <%= post.title %></h3>
+  <p>Body:<%= post.body %></p>
+  <%} else {%>
+  <p>post is not yet published</p>
+  <% } %> <%- include("../partials/nav.ejs") %> <%-
+  include("../partials/footer.ejs") %>
 </html>
