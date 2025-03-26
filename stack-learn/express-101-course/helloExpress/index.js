@@ -4,6 +4,7 @@ const fs = require("fs");
 const app = express();
 
 app.get("/", (req, res) => {
+  // File system read
   fs.readFile("./pages/pages.html", (err, data) => {
     if (err) {
       console.log(err);
