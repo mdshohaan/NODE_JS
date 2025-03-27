@@ -5,14 +5,14 @@ const router = express.Router({
 });
 
 // middleware
-// app.use(express.json());
-// app.use(express.raw());
-// app.use(express.text());
-// app.use(
-//   express.static(`${__dirname}/public/`, {
-//     index: "index.html",
-//   })
-// );
+app.use(express.json());
+app.use(express.raw());
+app.use(express.text());
+app.use(
+  express.static(`${__dirname}/public/`, {
+    index: "index.html",
+  })
+);
 
 app.use(router);
 router.post("/about", (req, res) => {
