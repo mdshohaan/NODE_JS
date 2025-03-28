@@ -21,7 +21,7 @@ app.get("/user/:id", (req, res) => {
 });
 
 app.post("/user", (req, res) => {
-  console.log(req.cookies);
+  console.log(req.route);
   res.send("Hello world post");
 });
 
