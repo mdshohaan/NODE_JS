@@ -11,13 +11,24 @@ const express = require("express");
 const app = express();
 const adminRouter = express.Router();
 
-const logger = (req, res, next) => {
-  console.log(`${new Date(Date.now()).toLocaleString()} - ${req.method} `);
-  next();
-  throw new Error("This is an Error");
+const loggerWrapper = (options) => {
+  return function (req, res, next) {
+    if (options.log) {
+      console.log(`${new Date(Date.now()).toLocaleString()} - ${req.method}`);
+      next();
+    } else {
+      throw new Error("Failed to Log!");
+    }
+  };
 };
+// const logger = (req, res, next) => {
+//   console.log(`${new Date(Date.now()).toLocaleString()} - ${req.method}`);
+//   // next();
+//   throw new Error("This is an Error");
+// };
 
-adminRouter.use(logger);
+// adminRouter.use(loggerWrapper);
+adminRouter.use(loggerWrapper({ log: true }));
 
 adminRouter.get("/dashboard", (req, res) => {
   res.send("Admin Dashboard");
