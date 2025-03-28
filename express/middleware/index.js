@@ -9,12 +9,24 @@
 
 const express = require("express");
 const app = express();
+const adminRouter = express.Router();
 
-const myMiddleware = (req, res, next) => {
-  console.log("I am logging ");
+const logger = (req, res, next) => {
+  console.log(
+    `${new Date(Date.now()).toLocaleString()} - ${req.method} ${
+      req.originalUrl
+    } - ${req.protocol.toUpperCase()} -${req.ip}`
+  );
   next();
 };
-app.use(myMiddleware);
+
+adminRouter.use(logger);
+
+adminRouter.get("/dashboard", (req, res) => {
+  res.send("Admin Dashboard");
+});
+
+app.use("/admin", adminRouter);
 
 app.get("/about", (req, res) => {
   res.send("About page");
