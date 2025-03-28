@@ -12,12 +12,9 @@ const app = express();
 const adminRouter = express.Router();
 
 const logger = (req, res, next) => {
-  console.log(
-    `${new Date(Date.now()).toLocaleString()} - ${req.method} ${
-      req.originalUrl
-    } - ${req.protocol.toUpperCase()} -${req.ip}`
-  );
+  console.log(`${new Date(Date.now()).toLocaleString()} - ${req.method} `);
   next();
+  throw new Error("This is an Error");
 };
 
 adminRouter.use(logger);
@@ -31,6 +28,13 @@ app.use("/admin", adminRouter);
 app.get("/about", (req, res) => {
   res.send("About page");
 });
+
+// error handler
+const errorMiddleware = (err, req, res, next) => {
+  console.log(err.message);
+  res.status(500).send("There was a server side error!");
+};
+adminRouter.use(errorMiddleware);
 
 app.listen(3000, () => {
   console.log("Server is Running");
