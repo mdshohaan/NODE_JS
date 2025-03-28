@@ -4,7 +4,11 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.get("/about", (req, res) => {
-  res.render("pages/about");
+  console.log(res.headersSent); // false
+  res.render("pages/about", {
+    name: "Bangladesh",
+  });
+  console.log(res.headersSent); // true
 });
 
 app.listen(3000, () => {
