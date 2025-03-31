@@ -11,3 +11,5 @@ app.use("/admin", adminRouter);
 app.listen(3000, () => {
   console.log("Server is Running");
 });
+
+// console.log("add all");
